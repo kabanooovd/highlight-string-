@@ -1,0 +1,13 @@
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.spanHighLight {
+    font-family: ubuntu;
+    font-size: 24px;
+}
