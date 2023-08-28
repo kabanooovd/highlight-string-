@@ -7,17 +7,25 @@ interface IProps {
 export const SpanHighLight = (props: IProps) => {
     const { string, search, className } = props;
     const valueToBold = (string: string) => {
-        const _search = new RegExp(search, "gi");
-        return string.replace(
-            _search,
-            `<span style="background-color: #e9e9e9; border-radius: 2px">$&</span>`
-        );
+        if (search) {
+            const _search = new RegExp(search, "gi");
+            return string.replace(_search, `+$&+`);
+        } else {
+            return `${string}`;
+        }
     };
 
     return (
-        <span
-            className={className}
-            dangerouslySetInnerHTML={{ __html: valueToBold(string) }}
-        />
+        <span>
+            {valueToBold(string)
+                .split("+")
+                .map((str) => {
+                    const cn =
+                        str.toLowerCase() === search.toLowerCase()
+                            ? className
+                            : "";
+                    return <span className={cn}>{str}</span>;
+                })}
+        </span>
     );
 };

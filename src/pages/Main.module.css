@@ -8,6 +8,6 @@
 }
 
 .spanHighLight {
-    font-family: ubuntu;
-    font-size: 24px;
+    background-color: blue;
+    color: white;
 }
